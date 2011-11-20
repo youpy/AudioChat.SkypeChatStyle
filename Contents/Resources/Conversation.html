@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Panamericana Chat Style</title>
+    <link rel="stylesheet" href="css/reset.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/main.css" type="text/css" media="screen">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/jsfx.js"></script>
+    <script src="js/jsfxlib.js"></script>
+    <script src="js/jsfxgui.js"></script>
+    <script>
+        var debug = false;
+        $(function() {
+          // from http://egonelbre.com/js/jsfx/
+          jsfxgui.createSampleGenerators('sample-generators');
+          jsfxgui.createConfigurationPanel('config-panel');
+          jsfxgui.initField('message');
+          jsfxgui.paramsToField();
+          jsfxgui.onplay = function() {
+            jsfxgui.paramsToField();
+          };
+
+          jsfxgui.onvaluemodified = function() {
+            jsfxgui.paramsToField();
+            jsfxgui.play();
+          };
+        });
+    </script>
+</head>
+<body>
+  <div id="audio-panel">
+    <form id="send-message">
+      <input id="message">
+    </form>
+    <div id="control">
+      <span id="sample-generators"></span>
+      <button onclick="jsfxgui.randomize()">Randomize</button>
+    </div>
+    <div id="config-panel"></div>
+  </div>
+
+  <div id="container">
+    <div id="conversation">
+      <div class="item typing invisible" id="typing">
+        <div class="container">
+          <div class="head">
+            <span class="sender"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
