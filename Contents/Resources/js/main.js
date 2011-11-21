@@ -453,12 +453,17 @@ SCS.Conversation = function() {
 	 * @see #appendBulk
 	 */	   
 	this.appendItem = function(html, scroll) {
-      var text = $(html).find('.body').text();
-      try {
-        var data = JSON.parse(text);
-        var sound = jsfxlib.createWave(data);
-        sound.play();
-      } catch(e){};
+      if(!html.match(/read"/)) {
+        //var text = $(html).find('span.sender').text();
+        var text = $(html).find('.body').text();
+        try {
+          // var data = JSON.parse(text);
+          // var sound = jsfxlib.createWave(data);
+          // sound.play();
+          var md5 = $.md5(text);
+          jsfxgui.setFromMd5(md5);
+        } catch(e){};
+      }
         
 		if (_container.length > 0) {
 			var atEnd = self._nearBottom();

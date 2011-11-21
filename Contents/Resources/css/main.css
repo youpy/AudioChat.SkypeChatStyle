@@ -1419,14 +1419,18 @@ i {
 /* audio chat */
 
 #container {
+/*
   margin-left: 450px;
+*/
 }
 
 #audio-panel {
+  display: none;
+/*
   width: 450px;
   position: fixed;
   padding: 1em;
-  overflow:scroll;
+*/
 }
 
 #message {

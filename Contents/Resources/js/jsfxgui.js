@@ -154,7 +154,30 @@ var jsfxgui = {};
         }
         this.play();
     }
-    
+
+
+  // added
+  this.char2value = function(c, range) {
+    var chars = '0123456789abcdef'.split('');
+    return range * (chars.indexOf(c) / chars.length);
+  };
+  this.setFromMd5 = function(md5){
+    var len = Parameters.length;
+    for (var i = 0; i < len; i++) {
+          var param = Parameters[i];
+      if( param.id === "MasterVolume" ) continue;
+      if( param.id === "SuperSamplingQuality" ) continue;
+      if( param.type === "range" ){
+        param.node.value = param.min + this.char2value(md5.charAt(i), param.max - param.min);
+      } else {
+        var ii = this.char2value(md5.charAt(i), param.options.length) | 0;
+        //var i = (Math.random() * param.options.length) | 0;
+        param.node[param.id][ii].checked = true;
+      }
+    }
+    this.play();
+  };
+
     this.getResetParams = function(){
         var p = {};
         p.Generator = "square";

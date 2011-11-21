@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/reset.css" type="text/css" media="screen">
     <link rel="stylesheet" href="css/main.css" type="text/css" media="screen">
     <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.md5.js"></script>
     <script src="js/main.js"></script>
     <script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
     <script src="js/audio.js"></script>
@@ -16,23 +17,16 @@
         var debug = false;
         $(function() {
           // from http://egonelbre.com/js/jsfx/
+          jsfxgui.initLogging("log");
           jsfxgui.createSampleGenerators('sample-generators');
           jsfxgui.createConfigurationPanel('config-panel');
-          jsfxgui.initField('message');
-          jsfxgui.paramsToField();
-          jsfxgui.onplay = function() {
-            jsfxgui.paramsToField();
-          };
-
-          jsfxgui.onvaluemodified = function() {
-            jsfxgui.paramsToField();
-            jsfxgui.play();
-          };
+        //jsfxgui.initField('message');
         });
     </script>
 </head>
 <body>
   <div id="audio-panel">
+    <div id="log"></div>
     <form id="send-message">
       <input id="message">
     </form>
