@@ -158,8 +158,7 @@ var jsfxgui = {};
 
   // added
   this.char2value = function(c, range) {
-    var chars = '0123456789abcdef'.split('');
-    return range * (chars.indexOf(c) / chars.length);
+    return range * (parseInt(c, 16) / 16);
   };
   this.setFromMd5 = function(md5){
     var len = Parameters.length;
